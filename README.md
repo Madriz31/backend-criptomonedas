@@ -1,61 +1,124 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Proyecto Backend Criptomonedas
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Instrucciones de instalación
 
-## About Laravel
+1. Clona el repositorio:
+   ```bash
+    https://github.com/Madriz31/backend-criptomonedas.git
+   cd backend-criptomonedas.git
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+2. Instala las dependencias PHP con Composer:
+    composer install
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+3. Copia el archivo de configuración:
+    cp .env.example .env
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+4. el archivo .env debe quedar asi 
 
-## Learning Laravel
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=base64:/l8Z+KDu+r+mMiSzcSAq3p+9Bn7skcDSHo06XUshxL0=
+APP_DEBUG=true
+APP_URL=http://localhost
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+APP_LOCALE=en
+APP_FALLBACK_LOCALE=en
+APP_FAKER_LOCALE=en_US
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+APP_MAINTENANCE_DRIVER=file
+# APP_MAINTENANCE_STORE=database
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+PHP_CLI_SERVER_WORKERS=4
 
-## Laravel Sponsors
+BCRYPT_ROUNDS=12
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+LOG_CHANNEL=stack
+LOG_STACK=single
+LOG_DEPRECATIONS_CHANNEL=null
+LOG_LEVEL=debug
 
-### Premium Partners
+DB_CONNECTION=sqlite
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+DB_DATABASE=database/database.sqlite
+# DB_USERNAME=root
+# DB_PASSWORD=
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+SESSION_DRIVER=database
+SESSION_LIFETIME=120
+SESSION_ENCRYPT=false
+SESSION_PATH=/
+SESSION_DOMAIN=null
 
-## Contributing
+BROADCAST_CONNECTION=log
+FILESYSTEM_DISK=local
+QUEUE_CONNECTION=database
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+CACHE_STORE=database
+# CACHE_PREFIX=
 
-## Code of Conduct
+MEMCACHED_HOST=127.0.0.1
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+REDIS_CLIENT=phpredis
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
 
-## Security Vulnerabilities
+MAIL_MAILER=log
+MAIL_SCHEME=null
+MAIL_HOST=127.0.0.1
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+AWS_USE_PATH_STYLE_ENDPOINT=false
 
-## License
+VITE_APP_NAME="${APP_NAME}"
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+JWT_SECRET=YVEjUoGrRSdUeM0ucXHxr9LmpsLxEWX2im9VtXT6EF8asRwjFZ09Y7HYH1rz5r6l
+ 
+
+5. genera la caalve de la app
+    php artisan key:generate
+
+6.Ejecuta las migraciones para crear las tablas
+
+    php artisan migrate
+
+7. Antes de correr el proyecto, asegúrate de que en tu archivo php.ini estén activas estas extensiones (descomentadas):
+    ; Habilitar SQLite
+    extension=pdo_sqlite
+    extension=sqlite3
+
+    ; Habilitar OpenSSL (necesario para JWT)
+    extension=openssl
+
+y ejecuta el servidor local 
+php artisan serve
+ 
+
+## Colección Postman para pruebas
+
+He incluido en el repositorio una colección Postman con todas las pruebas del API.
+
+### Cómo usarla:
+
+1. Abre Postman.
+2. Importa el archivo `postman/criptomonedas_api_collection.json`.
+3. Crea un entorno (Environment) en Postman con variables para:
+   - `base_url` = `http://localhost:8000/api`
+   - `jwt_token` = *Tu token JWT obtenido tras login*
+
+4. En la colección, las peticiones ya usan esas variables en los headers, así que solo asegúrate de tenerlas configuradas.
+5. Ejecuta las peticiones en el orden lógico: registrar usuario, login, crear moneda, crear cripto, listar, etc.
+
+---
+
+**Nota:** Todas las peticiones protegidas requieren el header:
+
